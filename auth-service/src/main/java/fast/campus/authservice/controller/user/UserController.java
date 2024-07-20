@@ -1,7 +1,6 @@
 package fast.campus.authservice.controller.user;
 
 import fast.campus.authservice.controller.request.EncryptedUserRequestBody;
-import fast.campus.authservice.controller.request.SimpleUserRequestBody;
 import fast.campus.authservice.domain.user.User;
 import fast.campus.authservice.service.user.UserService;
 import lombok.RequiredArgsConstructor;
@@ -17,10 +16,5 @@ public class UserController {
     @PostMapping("/api/v1/users")
     public User createNewUser(@RequestBody EncryptedUserRequestBody requestBody) {
         return userService.createNewUser(requestBody.getUserId(), requestBody.getPassword());
-    }
-
-    @PostMapping("/api/v1/users/auth")
-    public String auth(@RequestBody SimpleUserRequestBody requestBody) {
-        return userService.auth(requestBody.getUserId(), requestBody.getPassword());
     }
 }
